@@ -13,8 +13,12 @@ public class Series {
     @Column(nullable = false)
     private String title;
 
+    @Column(name = "release_year")  // Mapeo a la nueva columna
     private Integer year;
+
     private String type; // TV, OVA, Movie
+
+    @Column(name = "hours_length")
     private Double hoursLength;
 
     @ManyToOne
