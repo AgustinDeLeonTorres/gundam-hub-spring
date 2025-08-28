@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UniverseServiceImpl implements UniverseService {
+public class UniverseServiceImpl implements IUniverseService {
 
     private final IUniverseRepository IUniverseRepository;
 
