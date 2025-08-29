@@ -1,5 +1,6 @@
 package com.agustindlg.gundam_hub_spring.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class Universe {
     private String description;
 
     @OneToMany(mappedBy = "universe", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Series> series;
 
     // Constructores

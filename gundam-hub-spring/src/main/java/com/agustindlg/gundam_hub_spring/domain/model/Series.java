@@ -1,5 +1,6 @@
 package com.agustindlg.gundam_hub_spring.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class Series {
     @Column(nullable = false)
     private String title;
 
-    @Column(name = "release_year")  // Mapeo a la nueva columna
+    @Column(name = "release_year")
     private Integer year;
 
     private String type; // TV, OVA, Movie
@@ -26,6 +27,7 @@ public class Series {
     private Universe universe;
 
     @OneToMany(mappedBy = "series", cascade = CascadeType.ALL)
+    @JsonIgnore //
     private List<Episode> episodes;
 
     // Constructores
