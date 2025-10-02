@@ -1,4 +1,4 @@
-package com.agustindlg.gundam_hub_spring.infrastructure.web;
+package com.agustindlg.gundam_hub_spring.infrastructure.web.Series;
 
 import com.agustindlg.gundam_hub_spring.application.service.ISeriesService;
 import com.agustindlg.gundam_hub_spring.domain.model.Series;

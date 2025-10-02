@@ -1,4 +1,4 @@
-package com.agustindlg.gundam_hub_spring.infrastructure.web;
+package com.agustindlg.gundam_hub_spring.infrastructure.web.Universe;
 
 import com.agustindlg.gundam_hub_spring.application.service.IUniverseService;
 import com.agustindlg.gundam_hub_spring.domain.model.Universe;

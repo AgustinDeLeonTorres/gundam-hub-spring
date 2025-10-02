@@ -1,4 +1,4 @@
-package com.agustindlg.gundam_hub_spring.controller;
+package com.agustindlg.gundam_hub_spring.infrastructure.web.Health;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
