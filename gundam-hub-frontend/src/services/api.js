@@ -12,10 +12,27 @@ const apiClient = axios.create({
 // Servicio para Universos
 export const universeService = {
   getAllUniverses() {
+    console.log('🔄 Haciendo petición a:', API_BASE_URL + '/universes');
     return apiClient.get('/universes')
-      .then(response => response.data)
+      .then(response => {
+        console.log('✅ Respuesta recibida:', response.data);
+        return response.data;
+      })
       .catch(error => {
-        console.error('Error fetching universes:', error);
+        console.error('❌ Error completo:', error);
+        console.error('🔍 Detalles del error:');
+        if (error.response) {
+          // El servidor respondió con un código de error
+          console.error('Status:', error.response.status);
+          console.error('Data:', error.response.data);
+          console.error('Headers:', error.response.headers);
+        } else if (error.request) {
+          // La petición fue hecha pero no se recibió respuesta
+          console.error('No se recibió respuesta. Request:', error.request);
+        } else {
+          // Algo pasó al configurar la petición
+          console.error('Error de configuración:', error.message);
+        }
         throw error;
       });
   },
