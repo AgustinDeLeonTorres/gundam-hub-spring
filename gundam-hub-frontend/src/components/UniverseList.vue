@@ -1,39 +1,19 @@
 <template>
-  <div class="container mt-4">
-    <h1 class="text-center mb-4">🌌 Universos Gundam</h1>
-    
-    <div v-if="loading" class="text-center">
-      <div class="spinner-border text-primary" role="status">
-        <span class="visually-hidden">Cargando...</span>
+  <div class="universe-list">
+    <h1>Universos Gundam</h1>
+    <div v-if="loading">Cargando universos...</div>
+    <div v-else-if="error" class="alert alert-danger">{{ error }}</div>
+    <div v-else>
+      <div v-for="universe in universes" :key="universe.id" class="universe-item">
+        <h3>{{ universe.name }}</h3>
+        <p>{{ universe.description }}</p>
       </div>
-      <p class="mt-2">Cargando universos...</p>
-    </div>
-    
-    <div v-else class="row">
-      <div v-for="universe in universes" :key="universe.id" class="col-md-6 col-lg-4 mb-4">
-        <div class="card h-100 shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">{{ universe.name }}</h5>
-            <p class="card-text">{{ universe.description }}</p>
-            <div class="d-flex justify-content-between align-items-center">
-              <small class="text-muted">Año: {{ universe.year }}</small>
-              <button class="btn btn-outline-primary btn-sm">
-                Ver Series
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div v-if="error" class="alert alert-danger mt-3" role="alert">
-      Error cargando universos: {{ error }}
     </div>
   </div>
 </template>
 
 <script>
-import { universeService } from '@/services/api.js'
+import { universeService } from '@/services/api.js';
 
 export default {
   name: 'UniverseList',
@@ -42,26 +22,28 @@ export default {
       universes: [],
       loading: true,
       error: null
-    }
+    };
   },
   async mounted() {
     try {
-      this.universes = await universeService.getAll()
+      this.universes = await universeService.getAllUniverses();
     } catch (err) {
-      this.error = err.message
-      console.error('Error loading universes:', err)
+      this.error = 'Error al cargar los universos: ' + err.message;
     } finally {
-      this.loading = false
+      this.loading = false;
     }
   }
-}
+};
 </script>
 
 <style scoped>
-.card {
-  transition: transform 0.2s;
+.universe-list {
+  padding: 20px;
 }
-.card:hover {
-  transform: translateY(-5px);
+.universe-item {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 5px;
 }
 </style>
