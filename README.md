@@ -4,13 +4,103 @@
 
 API REST para gestión de universos, series y episodios de Gundam construida con Spring Boot y Clean Architecture.
 
-## 🚀 Endpoints Disponibles
+## 🌐 Endpoints Completos
 
-### API Principal
-- **🌌 Universos:** `http://localhost:8080/api/universes`
-- **📺 Series:** `http://localhost:8080/api/series`  
-- **🎬 Episodios:** `http://localhost:8080/api/episodes`
-- **❤️ Health Check:** `http://localhost:8080/api/health`
+### 📺 SERIES
+
+# Todas las series
+http://localhost:8080/api/series
+
+# Serie por ID
+http://localhost:8080/api/series/1
+http://localhost:8080/api/series/5
+http://localhost:8080/api/series/25
+
+# Series por universo
+http://localhost:8080/api/series/universe/1  # Universal Century
+http://localhost:8080/api/series/universe/2  # Alternate Universe
+
+# Series por era
+http://localhost:8080/api/series/era/1       # Pre-Guerra UC
+http://localhost:8080/api/series/era/2       # Guerra de Un Año
+http://localhost:8080/api/series/era/13      # Cosmic Era (SEED)
+http://localhost:8080/api/series/era/18      # Build Series
+
+🌌 UNIVERSOS
+
+# Todos los universos
+http://localhost:8080/api/universes
+
+# Universo por ID
+http://localhost:8080/api/universes/1
+http://localhost:8080/api/universes/2
+
+⏳ ERAS
+
+# Todas las eras
+http://localhost:8080/api/eras
+
+# Era por ID
+http://localhost:8080/api/eras/1
+http://localhost:8080/api/eras/13
+http://localhost:8080/api/eras/18
+
+# Eras por universo
+http://localhost:8080/api/eras/universe/1    # Eras UC
+http://localhost:8080/api/eras/universe/2    # Eras AU
+
+🎬 EPISODIOS
+
+# Todos los episodios
+http://localhost:8080/api/episodes
+
+# Episodio por ID
+http://localhost:8080/api/episodes/1
+
+# Episodios por serie
+http://localhost:8080/api/episodes/series/1
+
+🔧 HERRAMIENTAS DE DESARROLLO
+
+# Consola H2 Database
+http://localhost:8080/h2-console
+
+# JDBC URL: jdbc:h2:mem:gundamdb
+# User: sa
+# Password: password
+
+# Health Check
+http://localhost:8080/actuator/health
+
+🎯 Endpoints Clave para Verificación
+PRUEBA BÁSICA:
+
+# 1. Series principales UC
+http://localhost:8080/api/series/1    # Gundam: The Origin
+http://localhost:8080/api/series/5    # Gundam 0079 (original)
+http://localhost:8080/api/series/15   # Zeta Gundam
+
+# 2. Series principales AU  
+http://localhost:8080/api/series/25   # G Gundam
+http://localhost:8080/api/series/27   # Gundam Wing
+http://localhost:8080/api/series/33   # Gundam SEED
+http://localhost:8080/api/series/43   # Witch from Mercury
+
+# 3. Agrupaciones por universo
+http://localhost:8080/api/series/universe/1  # Todas series UC
+http://localhost:8080/api/series/universe/2  # Todas series AU
+
+# 4. Agrupaciones por era
+http://localhost:8080/api/series/era/2       # Series Guerra Un Año
+http://localhost:8080/api/series/era/13      # Series Cosmic Era (SEED)
+http://localhost:8080/api/series/era/18      # Series Build
+VERIFICACIÓN DE RELACIONES:
+
+# Ver que las relaciones cargan correctamente
+http://localhost:8080/api/series/1    # Debe mostrar universe y era
+http://localhost:8080/api/universes/1 # Debe cargar sin errores
+http://localhost:8080/api/eras/1      # Debe cargar sin errores
+
 
 ### Base de Datos H2 (Consola)
 - **URL Consola:** `http://localhost:8080/h2-console`
