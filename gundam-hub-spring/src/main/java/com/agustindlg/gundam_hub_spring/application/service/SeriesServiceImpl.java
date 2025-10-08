@@ -23,6 +23,18 @@ public class SeriesServiceImpl implements ISeriesService {
         return seriesRepository.findAll();
     }
 
+    // ✅ NUEVO MÉTODO: Buscar series por Era ID
+    @Override
+    public List<Series> findByEraId(Long eraId) {
+        return seriesRepository.findByEraId(eraId);
+    }
+
+    // ✅ NUEVO MÉTODO: Buscar series por Universe ID  
+    @Override
+    public List<Series> findByUniverseId(Long universeId) {
+        return seriesRepository.findByUniverseId(universeId);
+    }
+
     @Override
     public Optional<Series> getSeriesById(Long id) {
         return seriesRepository.findById(id);

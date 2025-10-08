@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/episodes")
+@CrossOrigin(origins = "http://localhost:5173") // ✅ AGREGAR CORS
 public class EpisodeController {
 
     private final IEpisodeService episodeService;
@@ -30,6 +31,12 @@ public class EpisodeController {
         Optional<Episode> episode = episodeService.getEpisodeById(id);
         return episode.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    // ✅ NUEVO ENDPOINT: Episodios por Series ID
+    @GetMapping("/series/{seriesId}")
+    public List<Episode> getEpisodesBySeries(@PathVariable Long seriesId) {
+        return episodeService.findBySeriesId(seriesId);
     }
 
     @PostMapping

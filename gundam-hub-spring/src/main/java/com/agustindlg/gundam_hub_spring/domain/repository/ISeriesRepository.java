@@ -10,5 +10,9 @@ import java.util.Optional;
 @Repository
 public interface ISeriesRepository extends JpaRepository<Series, Long> {
     List<Series> findByUniverseId(Long universeId);
+    
+    // ✅ AGREGAR ESTE MÉTODO NUEVO:
+    List<Series> findByEraId(Long eraId);
+    
     Optional<Series> findByTitle(String title);
 }

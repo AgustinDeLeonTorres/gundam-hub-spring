@@ -23,6 +23,12 @@ public class EpisodeServiceImpl implements IEpisodeService {
         return episodeRepository.findAll();
     }
 
+    // ✅ NUEVO MÉTODO: Buscar episodios por Series ID
+    @Override
+    public List<Episode> findBySeriesId(Long seriesId) {
+        return episodeRepository.findBySeriesId(seriesId);
+    }
+
     @Override
     public Optional<Episode> getEpisodeById(Long id) {
         return episodeRepository.findById(id);

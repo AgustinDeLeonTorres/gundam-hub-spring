@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/series")
+@CrossOrigin(origins = "http://localhost:5173") // ✅ AGREGAR CORS
 public class SeriesController {
 
     private final ISeriesService seriesService;
@@ -30,6 +31,18 @@ public class SeriesController {
         Optional<Series> series = seriesService.getSeriesById(id);
         return series.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    // ✅ NUEVO ENDPOINT: Series por Universe ID
+    @GetMapping("/universe/{universeId}")
+    public List<Series> getSeriesByUniverse(@PathVariable Long universeId) {
+        return seriesService.findByUniverseId(universeId);
+    }
+
+    // ✅ NUEVO ENDPOINT: Series por Era ID  
+    @GetMapping("/era/{eraId}")
+    public List<Series> getSeriesByEra(@PathVariable Long eraId) {
+        return seriesService.findByEraId(eraId);
     }
 
     @PostMapping

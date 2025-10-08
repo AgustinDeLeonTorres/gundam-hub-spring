@@ -26,8 +26,14 @@ public class Series {
     @JoinColumn(name = "universe_id")
     private Universe universe;
 
+    // ✅ NUEVO CAMPO: Relación con Era
+    @ManyToOne
+    @JoinColumn(name = "era_id")
+    @JsonIgnore
+    private Era era;
+
     @OneToMany(mappedBy = "series", cascade = CascadeType.ALL)
-    @JsonIgnore //
+    @JsonIgnore
     private List<Episode> episodes;
 
     // Constructores
@@ -58,6 +64,10 @@ public class Series {
 
     public Universe getUniverse() { return universe; }
     public void setUniverse(Universe universe) { this.universe = universe; }
+
+    // ✅ NUEVOS GETTERS/SETTERS PARA ERA
+    public Era getEra() { return era; }
+    public void setEra(Era era) { this.era = era; }
 
     public List<Episode> getEpisodes() { return episodes; }
     public void setEpisodes(List<Episode> episodes) { this.episodes = episodes; }
