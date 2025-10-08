@@ -7,7 +7,5 @@ import java.util.List;
 
 @Repository
 public interface IEpisodeRepository extends JpaRepository<Episode, Long> {
-    
-    // ✅ AGREGAR ESTE MÉTODO NUEVO:
-    List<Episode> findBySeriesId(Long seriesId);
+    List<Episode> findBySeriesId(Long seriesId); // ✅ MÉTODO AGREGADO
 }

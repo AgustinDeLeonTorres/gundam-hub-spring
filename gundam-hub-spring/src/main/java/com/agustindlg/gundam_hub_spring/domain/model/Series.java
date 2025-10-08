@@ -22,17 +22,17 @@ public class Series {
     @Column(name = "hours_length")
     private Double hoursLength;
 
-    @ManyToOne
+    // ✅ CAMBIAR A EAGER PARA EVITAR PROBLEMAS DE SESIÓN
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "universe_id")
     private Universe universe;
 
-    // ✅ NUEVO CAMPO: Relación con Era
-    @ManyToOne
+    // ✅ CAMBIAR A EAGER PARA EVITAR PROBLEMAS DE SESIÓN
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "era_id")
-    @JsonIgnore
     private Era era;
 
-    @OneToMany(mappedBy = "series", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "series", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Episode> episodes;
 
@@ -65,10 +65,10 @@ public class Series {
     public Universe getUniverse() { return universe; }
     public void setUniverse(Universe universe) { this.universe = universe; }
 
-    // ✅ NUEVOS GETTERS/SETTERS PARA ERA
     public Era getEra() { return era; }
     public void setEra(Era era) { this.era = era; }
 
+    @JsonIgnore
     public List<Episode> getEpisodes() { return episodes; }
     public void setEpisodes(List<Episode> episodes) { this.episodes = episodes; }
 }

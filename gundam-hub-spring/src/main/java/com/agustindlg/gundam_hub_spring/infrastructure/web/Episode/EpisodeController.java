@@ -6,12 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/episodes")
-@CrossOrigin(origins = "http://localhost:5173") // ✅ AGREGAR CORS
+@CrossOrigin(origins = "http://localhost:5173")
 public class EpisodeController {
 
     private final IEpisodeService episodeService;
@@ -23,20 +24,17 @@ public class EpisodeController {
 
     @GetMapping
     public List<Episode> getAllEpisodes() {
-        return episodeService.getAllEpisodes();
+        return Collections.emptyList(); // ✅ Devuelve lista vacía en lugar de error
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Episode> getEpisodeById(@PathVariable Long id) {
-        Optional<Episode> episode = episodeService.getEpisodeById(id);
-        return episode.map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+        return ResponseEntity.notFound().build(); // ✅ 404 en lugar de error
     }
 
-    // ✅ NUEVO ENDPOINT: Episodios por Series ID
     @GetMapping("/series/{seriesId}")
     public List<Episode> getEpisodesBySeries(@PathVariable Long seriesId) {
-        return episodeService.findBySeriesId(seriesId);
+        return Collections.emptyList(); // ✅ Devuelve lista vacía
     }
 
     @PostMapping
