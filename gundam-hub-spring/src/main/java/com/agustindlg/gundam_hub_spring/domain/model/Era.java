@@ -1,12 +1,14 @@
 package com.agustindlg.gundam_hub_spring.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "eras")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Era {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +28,7 @@ public class Era {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "universe_id")
-    @JsonIgnore
+    @JsonIgnoreProperties({"series", "eras"})
     private Universe universe;
 
     @OneToMany(mappedBy = "era", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
