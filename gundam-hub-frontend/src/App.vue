@@ -1,14 +1,6 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-dark bg-dark">
-      <div class="container">
-        <span class="navbar-brand mb-0 h1">🎯 Gundam Hub</span>
-      </div>
-    </nav>
-    
-    <div class="container mt-4">
-      <router-view />
-    </div>
+    <router-view />
   </div>
 </template>
 
@@ -19,6 +11,19 @@ export default {
 </script>
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  line-height: 1.6;
+}
+
 #app {
   min-height: 100vh;
 }

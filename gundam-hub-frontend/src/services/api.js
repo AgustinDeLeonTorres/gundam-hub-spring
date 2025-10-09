@@ -1,60 +1,130 @@
-import axios from 'axios';
-
-const API_BASE_URL = 'http://localhost:8080/api';
-
-const apiClient = axios.create({
-  baseURL: API_BASE_URL,
-  headers: {
-    'Content-Type': 'application/json'
-  }
-});
+// src/services/api.js - VERSIÓN CORREGIDA
+const API_URL = 'http://localhost:8080/api';
 
 // Servicio para Universos
-export const universeService = {
-  getAllUniverses() {
-    console.log('🔄 Haciendo petición a:', API_BASE_URL + '/universes');
-    return apiClient.get('/universes')
-      .then(response => {
-        console.log('✅ Respuesta recibida:', response.data);
-        return response.data;
-      })
-      .catch(error => {
-        console.error('❌ Error completo:', error);
-        console.error('🔍 Detalles del error:');
-        if (error.response) {
-          // El servidor respondió con un código de error
-          console.error('Status:', error.response.status);
-          console.error('Data:', error.response.data);
-          console.error('Headers:', error.response.headers);
-        } else if (error.request) {
-          // La petición fue hecha pero no se recibió respuesta
-          console.error('No se recibió respuesta. Request:', error.request);
-        } else {
-          // Algo pasó al configurar la petición
-          console.error('Error de configuración:', error.message);
-        }
-        throw error;
-      });
-  },
-  
-  getUniverseById(id) {
-    return apiClient.get(`/universes/${id}`)
-      .then(response => response.data);
-  },
-  
-  createUniverse(universeData) {
-    return apiClient.post('/universes', universeData)
-      .then(response => response.data);
-  },
-  
-  updateUniverse(id, universeData) {
-    return apiClient.put(`/universes/${id}`, universeData)
-      .then(response => response.data);
-  },
-  
-  deleteUniverse(id) {
-    return apiClient.delete(`/universes/${id}`);
+export const getUniverses = async () => {
+  try {
+    console.log('🌌 Haciendo petición a:', `${API_URL}/universes`);
+    const response = await fetch(`${API_URL}/universes`);
+    
+    if (!response.ok) {
+      throw new Error(`Error HTTP: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    console.log('✅ Universos recibidos:', data);
+    return data;
+  } catch (error) {
+    console.error('❌ Error en getUniverses:', error);
+    throw error;
   }
 };
 
-export default apiClient;
+// Servicio para Eras
+export const getEras = async () => {
+  try {
+    const response = await fetch(`${API_URL}/eras`);
+    if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
+    return await response.json();
+  } catch (error) {
+    console.error('❌ Error en getEras:', error);
+    throw error;
+  }
+};
+
+// Servicio para Series
+export const getSeries = async () => {
+  try {
+    const response = await fetch(`${API_URL}/series`);
+    if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
+    return await response.json();
+  } catch (error) {
+    console.error('❌ Error en getSeries:', error);
+    throw error;
+  }
+};
+
+// Servicio para Eras por Universo
+export const getErasByUniverse = async (universeId) => {
+  try {
+    const response = await fetch(`${API_URL}/eras/universe/${universeId}`);
+    if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
+    return await response.json();
+  } catch (error) {
+    console.error(`❌ Error en getErasByUniverse para universo ${universeId}:`, error);
+    throw error;
+  }
+};
+
+// Servicio para Series por Era
+export const getSeriesByEra = async (eraId) => {
+  try {
+    const response = await fetch(`${API_URL}/series/era/${eraId}`);
+    if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
+    return await response.json();
+  } catch (error) {
+    console.error(`❌ Error en getSeriesByEra para era ${eraId}:`, error);
+    throw error;
+  }
+};
+
+// Servicio para Series por Universo
+export const getSeriesByUniverse = async (universeId) => {
+  try {
+    const response = await fetch(`${API_URL}/series/universe/${universeId}`);
+    if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
+    return await response.json();
+  } catch (error) {
+    console.error(`❌ Error en getSeriesByUniverse para universo ${universeId}:`, error);
+    throw error;
+  }
+};
+
+// Servicio para Universo por ID
+export const getUniverseById = async (id) => {
+  try {
+    const response = await fetch(`${API_URL}/universes/${id}`);
+    if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
+    return await response.json();
+  } catch (error) {
+    console.error(`❌ Error en getUniverseById para ID ${id}:`, error);
+    throw error;
+  }
+};
+
+// Servicio para Era por ID
+export const getEraById = async (id) => {
+  try {
+    const response = await fetch(`${API_URL}/eras/${id}`);
+    if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
+    return await response.json();
+  } catch (error) {
+    console.error(`❌ Error en getEraById para ID ${id}:`, error);
+    throw error;
+  }
+};
+
+// Servicio para Serie por ID
+export const getSeriesById = async (id) => {
+  try {
+    const response = await fetch(`${API_URL}/series/${id}`);
+    if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
+    return await response.json();
+  } catch (error) {
+    console.error(`❌ Error en getSeriesById para ID ${id}:`, error);
+    throw error;
+  }
+};
+
+// Exportar todo como objeto también (para compatibilidad)
+export default {
+  getUniverses,
+  getEras,
+  getSeries,
+  getErasByUniverse,
+  getSeriesByEra,
+  getSeriesByUniverse,
+  getUniverseById,
+  getEraById,
+  getSeriesById
+};
