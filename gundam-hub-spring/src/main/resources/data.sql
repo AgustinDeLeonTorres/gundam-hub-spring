@@ -67,10 +67,15 @@ INSERT INTO series (id, title, release_year, type, hours_length, universe_id, er
 
 -- Conflictos de Gryps
 INSERT INTO series (id, title, release_year, type, hours_length, universe_id, era_id) VALUES
-(15, 'Mobile Suit Zeta Gundam', 1985, 'TV', 20.42, 1, 4),
-(16, 'Mobile Suit Gundam ZZ', 1986, 'TV', 19.19, 1, 4);
+(15, 'Mobile Suit Zeta Gundam', 1985, 'TV', 20.42, 1, 4);
 
--- Segunda Neo-Zeon War
+-- PRIMERA GUERRA NEO-ZEON - CORREGIDO
+INSERT INTO series (id, title, release_year, type, hours_length, universe_id, era_id) VALUES
+(16, 'Mobile Suit Gundam ZZ', 1986, 'TV', 19.19, 1, 5),
+(59, 'Mobile Suit Gundam: ZZ Special Edition', 1989, 'OVA', 4.0, 1, 5),
+(60, 'Mobile Suit Gundam: Evolve 9 (ZZ Gundam)', 2004, 'Special', 0.08, 1, 5);
+
+-- Segunda Guerra Neo-Zeon
 INSERT INTO series (id, title, release_year, type, hours_length, universe_id, era_id) VALUES
 (17, 'Mobile Suit Gundam: Char''s Counterattack', 1988, 'Movie', 2.0, 1, 6);
 
