@@ -1,30 +1,28 @@
 <template>
   <div id="app">
+    <HeaderComponent />
     <router-view />
+    <FooterComponent />
   </div>
 </template>
 
 <script>
+import HeaderComponent from '@/presentation/components/HeaderComponent.vue'
+import FooterComponent from '@/presentation/components/FooterComponent.vue'
+
+// Importar estilos modulares
+import '@/presentation/styles/global.css'
+import '@/presentation/styles/components.css'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    HeaderComponent,
+    FooterComponent
+  }
 }
 </script>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f5f5f5;
-  color: #333;
-  line-height: 1.6;
-}
-
-#app {
-  min-height: 100vh;
-}
+/* App.vue queda SIN estilos - todo está en los archivos CSS modulares */
 </style>
