@@ -4,42 +4,37 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: () => import('@/presentation/views/HomeView.vue')
+    component: () => import('@/presentation/views/home/HomeView.vue')
   },
   {
     path: '/about',
     name: 'about',
-    component: () => import('@/presentation/views/AboutView.vue')
+    component: () => import('@/presentation/views/about/AboutView.vue')
   },
   {
-    path: '/universe/:id?',
+    path: '/universes',
+    name: 'universes', 
+    component: () => import('@/presentation/views/universes/UniversesView.vue')
+  },
+  {
+    path: '/universe/:id',
     name: 'universe',
-    component: () => import('@/presentation/views/UniverseView.vue')
+    component: () => import('@/presentation/views/universe/UniverseView.vue')
+  },
+  {
+    path: '/eras',
+    name: 'eras',
+    component: () => import('@/presentation/views/eras/AllErasView.vue')
   },
   {
     path: '/era/:id',
     name: 'era',
-    component: () => import('@/presentation/views/EraView.vue')
-  },
-  {
-    path: '/eras',
-    name: 'all-eras', 
-    component: () => import('@/presentation/views/AllErasView.vue')
+    component: () => import('@/presentation/views/era/EraView.vue')
   },
   {
     path: '/series',
     name: 'series',
-    component: () => import('@/presentation/views/SeriesView.vue')
-  },
-  {
-    path: '/mobile-suits',
-    name: 'mobile-suits',
-    component: () => import('@/presentation/views/MobileSuitsView.vue')
-  },
-  {
-    path: '/characters',
-    name: 'characters',
-    component: () => import('@/presentation/views/CharactersView.vue')
+    component: () => import('@/presentation/views/series/SeriesView.vue')
   }
 ]
 

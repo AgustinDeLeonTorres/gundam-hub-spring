@@ -1,0 +1,87 @@
+.series-view {
+  padding: 2rem 0;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.page-header p {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+}
+
+.loading-message {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-secondary);
+}
+
+.series-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.series-card {
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+}
+
+.series-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  border-color: var(--accent-color);
+}
+
+.series-image {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  background-color: #2a2a2a;
+}
+
+.series-info {
+  padding: 1.5rem;
+}
+
+.series-info h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.series-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.description {
+  line-height: 1.5;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .series-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .page-header h1 {
+    font-size: 2rem;
+  }
+}

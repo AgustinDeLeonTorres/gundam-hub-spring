@@ -23,6 +23,4 @@ export default {
 }
 </script>
 
-<style scoped>
-/* Sin estilos - todo está en los archivos CSS modulares */
-</style>
+<style src="./HomeView.css" scoped></style>
