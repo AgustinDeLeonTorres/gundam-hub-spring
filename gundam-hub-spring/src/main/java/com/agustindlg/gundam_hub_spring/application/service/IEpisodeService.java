@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface IEpisodeService {
     List<Episode> getAllEpisodes();
-    List<Episode> findBySeriesId(Long seriesId); // ✅ MÉTODO AGREGADO
+    List<Episode> findBySeasonId(Long seasonId);
     Optional<Episode> getEpisodeById(Long id);
     Episode saveEpisode(Episode episode);
     void deleteEpisode(Long id);

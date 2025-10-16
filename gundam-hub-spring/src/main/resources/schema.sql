@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS seasons (
     title VARCHAR(255) NOT NULL,
     description TEXT,
     release_year INT,
-    type ENUM('TV', 'MOVIE', 'OVA', 'SPECIAL', 'ONA') NOT NULL DEFAULT 'TV',
+    type ENUM('TV', 'MOVIE', 'OVA', 'SPECIAL', 'ONA', 'LIVE-ACTION', 'SHORT') NOT NULL DEFAULT 'TV',
     hours_length DOUBLE,
     chronological_order INT,
     episode_count INT DEFAULT 0,
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS seasons (
 );
 
 -- =========================
--- TABLA EPISODIOS (QUINTO - depende de seasons)
+-- TABLA EPISODIOS (QUINTO - depende de seasons) - ÚLTIMA TABLA
 -- =========================
 CREATE TABLE IF NOT EXISTS episodes (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,

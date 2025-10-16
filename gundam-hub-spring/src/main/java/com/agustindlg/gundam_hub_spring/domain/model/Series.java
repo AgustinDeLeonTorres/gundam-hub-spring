@@ -35,11 +35,12 @@ public class Series {
     @JsonIgnoreProperties({"series", "universe"})
     private Era era;
     
+    // RELACIÓN CON SEASONS
     @OneToMany(mappedBy = "series", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<Episode> episodes = new ArrayList<>();
+    private List<Season> seasons = new ArrayList<>();
     
-    // CONSTRUCTORES
+    // CONSTRUCTORES (mantener igual)
     public Series() {}
     
     public Series(String title, Integer year, String type, Double hoursLength) {
@@ -49,91 +50,31 @@ public class Series {
         this.hoursLength = hoursLength;
     }
     
-    public Series(Long id, String title, Integer year, String type, Double hoursLength, Universe universe, Era era) {
-        this.id = id;
-        this.title = title;
-        this.year = year;
-        this.type = type;
-        this.hoursLength = hoursLength;
-        this.universe = universe;
-        this.era = era;
-    }
+    // GETTERS Y SETTERS (mantener)
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
     
-    // GETTERS Y SETTERS
-    public Long getId() {
-        return id;
-    }
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
     
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public Integer getYear() { return year; }
+    public void setYear(Integer year) { this.year = year; }
     
-    public String getTitle() {
-        return title;
-    }
+    public String getType() { return type; }
+    public void setType(String type) { this.type = type; }
     
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    public Double getHoursLength() { return hoursLength; }
+    public void setHoursLength(Double hoursLength) { this.hoursLength = hoursLength; }
     
-    public Integer getYear() {
-        return year;
-    }
+    public Universe getUniverse() { return universe; }
+    public void setUniverse(Universe universe) { this.universe = universe; }
     
-    public void setYear(Integer year) {
-        this.year = year;
-    }
+    public Era getEra() { return era; }
+    public void setEra(Era era) { this.era = era; }
     
-    public String getType() {
-        return type;
-    }
+    public List<Season> getSeasons() { return seasons; }
+    public void setSeasons(List<Season> seasons) { this.seasons = seasons; }
     
-    public void setType(String type) {
-        this.type = type;
-    }
-    
-    public Double getHoursLength() {
-        return hoursLength;
-    }
-    
-    public void setHoursLength(Double hoursLength) {
-        this.hoursLength = hoursLength;
-    }
-    
-    public Universe getUniverse() {
-        return universe;
-    }
-    
-    public void setUniverse(Universe universe) {
-        this.universe = universe;
-    }
-    
-    public Era getEra() {
-        return era;
-    }
-    
-    public void setEra(Era era) {
-        this.era = era;
-    }
-    
-    public List<Episode> getEpisodes() {
-        return episodes;
-    }
-    
-    public void setEpisodes(List<Episode> episodes) {
-        this.episodes = episodes;
-    }
-    
-    // MÉTODOS DE CONVENIENCIA
-    public void addEpisode(Episode episode) {
-        episodes.add(episode);
-        episode.setSeries(this);
-    }
-    
-    public void removeEpisode(Episode episode) {
-        episodes.remove(episode);
-        episode.setSeries(null);
-    }
     
     @Override
     public String toString() {

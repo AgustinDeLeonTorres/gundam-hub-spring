@@ -1,5 +1,6 @@
-package com.agustindlg.gundam_hub_spring.application.service;
+package com.agustindlg.gundam_hub_spring.application.service.impl;
 
+import com.agustindlg.gundam_hub_spring.application.service.IEpisodeService;
 import com.agustindlg.gundam_hub_spring.domain.model.Episode;
 import com.agustindlg.gundam_hub_spring.domain.repository.IEpisodeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +24,9 @@ public class EpisodeServiceImpl implements IEpisodeService {
         return episodeRepository.findAll();
     }
 
-    // ✅ NUEVO MÉTODO: Buscar episodios por Series ID
     @Override
-    public List<Episode> findBySeriesId(Long seriesId) {
-        return episodeRepository.findBySeriesId(seriesId);
+    public List<Episode> findBySeasonId(Long seasonId) {
+        return episodeRepository.findBySeasonId(seasonId);
     }
 
     @Override

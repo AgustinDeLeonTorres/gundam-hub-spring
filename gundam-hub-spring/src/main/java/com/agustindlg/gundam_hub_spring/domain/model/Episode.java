@@ -10,20 +10,22 @@ public class Episode {
     private Long id;
 
     private String title;
-    private Double duration; // en horas
     private Integer episodeNumber;
+    private Integer durationMinutes; 
+    private String description;
 
     @ManyToOne
-    @JoinColumn(name = "series_id")
-    private Series series;
+    @JoinColumn(name = "season_id")
+    private Season season;
 
     // Constructores
     public Episode() {}
 
-    public Episode(String title, Double duration, Integer episodeNumber) {
+    public Episode(String title, Integer episodeNumber, Integer durationMinutes, String description) {
         this.title = title;
-        this.duration = duration;
         this.episodeNumber = episodeNumber;
+        this.durationMinutes = durationMinutes;
+        this.description = description;
     }
 
     // Getters y setters
@@ -33,12 +35,15 @@ public class Episode {
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
 
-    public Double getDuration() { return duration; }
-    public void setDuration(Double duration) { this.duration = duration; }
-
     public Integer getEpisodeNumber() { return episodeNumber; }
     public void setEpisodeNumber(Integer episodeNumber) { this.episodeNumber = episodeNumber; }
 
-    public Series getSeries() { return series; }
-    public void setSeries(Series series) { this.series = series; }
+    public Integer getDurationMinutes() { return durationMinutes; }
+    public void setDurationMinutes(Integer durationMinutes) { this.durationMinutes = durationMinutes; }
+
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+
+    public Season getSeason() { return season; }
+    public void setSeason(Season season) { this.season = season; }
 }

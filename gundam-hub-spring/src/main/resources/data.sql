@@ -167,9 +167,62 @@ INSERT INTO series (id, title, release_year, type, hours_length, universe_id, er
 (58, 'Mobile Suit Gundam GQuuuuuuX (TV)', 2025, 'TV', 4.8, 2, 20);
 
 -- =========================
--- TEMPORADAS (SEASONS) - COMPLETO
+-- TEMPORADAS (SEASONS) - COMPLETO CON DEFAULTS Y ORDEN CORRECTO
 -- =========================
 
+-- PRIMERO: Seasons default para series que no tienen temporadas definidas
+INSERT INTO seasons (series_id, season_number, title, description, release_year, type, hours_length, chronological_order, episode_count) VALUES
+-- UC Series sin seasons
+(1, 1, 'Complete OVA Series', 'Todas las OVAs de Mobile Suit Gundam: The Origin', 2015, 'OVA', 6.0, 1, 6),
+(5, 1, 'Complete TV Series', 'Serie televisiva completa Mobile Suit Gundam 0079', 1979, 'TV', 17.56, 1, 43),
+(6, 1, 'Movie', 'Película completa', 2022, 'MOVIE', 1.75, 1, 1),
+(11, 1, 'War in the Pocket OVAs', 'Serie completa de OVAs', 1989, 'OVA', 2.45, 1, 6),
+(12, 1, 'Requiem for Vengeance', 'Serie ONA completa', 2024, 'ONA', 2.0, 1, 8),
+(13, 1, 'Gundam Evolve Shorts', 'Colección de cortos animados', 2001, 'SPECIAL', 1.07, 1, 15),
+(14, 1, 'Stardust Memory OVAs', 'Serie completa de OVAs', 1991, 'OVA', 5.31, 1, 13),
+(15, 1, 'Complete TV Series', 'Serie televisiva completa Zeta Gundam', 1985, 'TV', 20.42, 1, 50),
+(16, 1, 'Complete TV Series', 'Serie televisiva completa ZZ Gundam', 1986, 'TV', 19.19, 1, 47),
+(17, 1, 'Movie', 'Película completa Char''s Counterattack', 1988, 'MOVIE', 2.0, 1, 1),
+(18, 1, 'Unicorn OVAs', 'Serie completa de OVAs', 2010, 'OVA', 7.0, 1, 7),
+(19, 1, 'Twilight Axis', 'Serie ONA completa', 2017, 'ONA', 0.43, 1, 3),
+(20, 1, 'Movie', 'Película completa Narrative', 2018, 'MOVIE', 1.5, 1, 1),
+(21, 1, 'Movie', 'Película completa Hathaway', 2021, 'MOVIE', 1.72, 1, 1),
+(22, 1, 'Movie', 'Película completa F91', 1991, 'MOVIE', 1.92, 1, 1),
+(23, 1, 'Complete TV Series', 'Serie televisiva completa Victory Gundam', 1993, 'TV', 20.83, 1, 51),
+(24, 1, 'Live-action Movie', 'Película live-action completa', 2000, 'MOVIE', 1.55, 1, 1), -- CAMBIADO: LIVE-ACTION → MOVIE
+(59, 1, 'ZZ Special Edition', 'Compilación especial de ZZ Gundam', 1989, 'OVA', 4.0, 1, 3),
+(60, 1, 'Evolve 9 Short', 'Corto animado de ZZ Gundam', 2004, 'SPECIAL', 0.08, 1, 1),
+
+-- AU Series sin seasons
+(25, 1, 'Complete TV Series', 'Serie televisiva completa G Gundam', 1994, 'TV', 20.01, 1, 49),
+(26, 1, 'G Gundam Specials', 'Especiales de G Gundam', 2004, 'OVA', 0.83, 1, 3),
+(27, 1, 'Complete TV Series', 'Serie televisiva completa Gundam Wing', 1995, 'TV', 20.01, 1, 49),
+(28, 1, 'Endless Waltz', 'Película OVA completa', 1997, 'MOVIE', 1.5, 1, 1),
+(29, 1, 'Complete TV Series', 'Serie televisiva completa Gundam X', 1996, 'TV', 15.93, 1, 39),
+(30, 1, 'Complete TV Series', 'Serie televisiva completa Turn A Gundam', 1999, 'TV', 20.42, 1, 50),
+(31, 1, 'Earth Light Movie', 'Película compilación Earth Light', 2002, 'MOVIE', 2.0, 1, 1),
+(32, 1, 'Moonlight Butterfly Movie', 'Película compilación Moonlight Butterfly', 2002, 'MOVIE', 2.17, 1, 1),
+(33, 1, 'Complete TV Series', 'Serie televisiva completa Gundam SEED', 2002, 'TV', 20.42, 1, 50),
+(34, 1, 'MSV Astray', 'OVA especial MSV Astray', 2004, 'OVA', 0.17, 1, 1),
+(35, 1, 'Complete TV Series', 'Serie televisiva completa SEED Destiny', 2004, 'TV', 20.42, 1, 50),
+(36, 1, 'Stargazer OVA', 'Serie OVA completa Stargazer', 2006, 'OVA', 0.75, 1, 3),
+(37, 1, 'Freedom Movie', 'Película completa SEED Freedom', 2024, 'MOVIE', 2.07, 1, 1),
+(40, 1, 'Complete TV Series', 'Serie televisiva completa Gundam AGE', 2011, 'TV', 20.01, 1, 49),
+(41, 1, 'Memory of Eden OVA', 'OVA especial Memory of Eden', 2013, 'OVA', 2.5, 1, 2),
+(43, 1, 'Complete TV Series', 'Serie televisiva completa Witch from Mercury', 2022, 'TV', 9.8, 1, 24),
+(44, 1, 'Gundam-san Shorts', 'Colección de cortos cómicos', 2014, 'SPECIAL', 0.65, 1, 13),
+(45, 1, 'Evolve Shorts', 'Colección de cortos animados', 2001, 'SPECIAL', 1.07, 1, 15),
+(46, 1, 'Gundam Moon Short', 'Corto especial Gundam Moon', 2024, 'SPECIAL', 0.17, 1, 1), -- CAMBIADO: SHORT → SPECIAL
+(47, 1, 'Complete TV Series', 'Serie televisiva completa SD Gundam Force', 2004, 'TV', 19.07, 1, 52),
+(53, 1, 'THE RIDE Short', 'Corto especial THE RIDE', 2000, 'SPECIAL', 0.08, 1, 1), -- CAMBIADO: SHORT → SPECIAL
+(54, 1, 'Green Divers Short', 'Corto especial Green Divers', 2001, 'SPECIAL', 0.4, 1, 1), -- CAMBIADO: SHORT → SPECIAL
+(55, 1, 'Complete TV Series', 'Serie televisiva completa Reconguista in G', 2014, 'TV', 10.4, 1, 26),
+(56, 1, 'Movie Compilation', 'Compilación de películas Reconguista in G', 2019, 'MOVIE', 8.33, 1, 5),
+(57, 1, 'Beginning Movie', 'Película inicial GQuuuuuuX', 2025, 'MOVIE', 1.35, 1, 1),
+(58, 1, 'Complete TV Series', 'Serie televisiva completa GQuuuuuuX', 2025, 'TV', 4.8, 1, 12);
+
+-- LUEGO: Series que SÍ tienen múltiples seasons (en orden)
+--UC Series con múltiples seasons
 -- MS IGLOO (3 temporadas)
 INSERT INTO seasons (series_id, season_number, title, description, release_year, type, hours_length, chronological_order, episode_count) VALUES
 (2, 1, 'MS IGLOO: The Hidden One Year War', 'Primera temporada que muestra perspectivas únicas de la Guerra de Un Año', 2004, 'OVA', 1.5, 1, 3),
@@ -185,6 +238,8 @@ INSERT INTO seasons (series_id, season_number, title, description, release_year,
 INSERT INTO seasons (series_id, season_number, title, description, release_year, type, hours_length, chronological_order, episode_count) VALUES
 (9, 1, 'Thunderbolt: December Sky', 'Primera parte del intenso conflicto en el sector Thunderbolt', 2016, 'MOVIE', 1.67, 1, 1),
 (10, 2, 'Thunderbolt: Bandit Flower', 'Continuación de la batalla entre la Federación y Zeon', 2017, 'MOVIE', 1.5, 2, 1);
+
+--AU Series con múltiples seasons
 
 -- Gundam 00 (3 partes)
 INSERT INTO seasons (series_id, season_number, title, description, release_year, type, hours_length, chronological_order, episode_count) VALUES
@@ -211,3 +266,31 @@ INSERT INTO seasons (series_id, season_number, title, description, release_year,
 (50, 3, 'Gundam Build Divers', 'Tercera temporada en mundo virtual', 2018, 'TV', 10.0, 3, 25),
 (51, 4, 'Gundam Build Divers Re:RISE', 'Cuarta temporada con historia más seria', 2019, 'TV', 10.4, 4, 26),
 (52, 5, 'Gundam Build Metaverse', 'Crossover especial de Build Series', 2023, 'ONA', 0.5, 5, 3);
+
+-- =========================
+-- EPISODIOS - MS IGLOO (TESTEO INICIAL)
+-- =========================
+
+-- SEASON 1: MS IGLOO: The Hidden One Year War (season_id: 1)
+INSERT INTO episodes (season_id, episode_number, title, duration_minutes, description) VALUES
+(1, 1, 'The Vanishing Serpent of Loum', 30, 'La 603a Unidad de Evaluación Técnica de Zeon prueba el cañón Jormungand a bordo del Jotunheim. El Teniente Ingeniero Oliver May supervisa la evaluación de este prototipo de arma de largo alcance durante la Guerra de Un Año.'),
+
+(1, 2, 'Howls Stained in Dusk', 30, 'Durante la Operación de Caída a la Tierra, la 603 evalúa el YMT-05 Hildolfr, un tanque móvil transformable masivo. El Mayor Demeziere Sonnen debe probar esta impresionante máquina en condiciones de combate real.'),
+
+(1, 3, 'Dance of the Orbital Ghosts', 30, 'La 603 prueba el EMS-10 Zudah, un mobile suit que compitió originalmente contra el Zaku II. Monique Cadillac pilotea esta peligrosa máquina que fue descartada por fallas estructurales críticas, arriesgando su vida.');
+
+-- SEASON 2: MS IGLOO: Apocalypse 0079 (season_id: 2)
+INSERT INTO episodes (season_id, episode_number, title, duration_minutes, description) VALUES
+(2, 1, 'In the Skies of Jaburo, I Saw the Sea', 25, 'Con Zeon perdiendo terreno en la Tierra, la 603 debe infiltrar el espacio aéreo de Jaburo. El Alférez Werner Holbein pilota el Ze''Gok en una misión desesperada contra las naves de la Federación.'),
+
+(2, 2, 'Cross the Path of Light', 25, 'Tras la caída de Solomon, la 603 llega a A Baoa Qu. El Coronel von Kuspen trae un escuadrón de cápsulas Oggo pilotadas por cadetes forzosamente movilizados, incluyendo al hermano de Monique, Erwin.'),
+
+(2, 3, 'Spirits Returning to the Cries of Thunder', 25, 'En el asalto final a A Baoa Qu, aparece el Big Zam de Dozle Zabi, el mobile armor más grande jamás construido. El destino de la 603 y de toda la guerra pende de un hilo.');
+
+-- SEASON 3: MS IGLOO 2: Gravity Front (season_id: 3)
+INSERT INTO episodes (season_id, episode_number, title, duration_minutes, description) VALUES
+(3, 1, 'Shoot at that Death!', 30, 'Las fuerzas de la Federación son derrotadas por los Zakus de Zeon. El Teniente Ben Barberry es atormentado por el Shinigami, el Dios de la Muerte, mientras lidera su escuadrón anti-mobile suit en una emboscada desesperada.'),
+
+(3, 2, 'King of the Land, Forward!', 30, 'El Sargento Rayban Surat se une al veterano Teniente Harmon Yandell. Yandell busca venganza contra el Ogro Blanco de Zeon, el Capitán Elmer Snell, quien le costó su pierna izquierda en combate previo.'),
+
+(3, 3, 'Odessa, Iron Storm!', 30, 'La Operación Odessa avanza pero la 44a Brigada Híbrida sufre bombardeos de las embarcaciones terrestres Dabude de Zeon. La batalla final por Odessa y el control de la Tierra comienza.');

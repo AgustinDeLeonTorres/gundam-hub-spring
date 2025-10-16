@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,27 +23,29 @@ public class EpisodeController {
 
     @GetMapping
     public List<Episode> getAllEpisodes() {
-        return Collections.emptyList(); // ✅ Devuelve lista vacía en lugar de error
+        return episodeService.getAllEpisodes();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Episode> getEpisodeById(@PathVariable Long id) {
-        return ResponseEntity.notFound().build(); // ✅ 404 en lugar de error
+        Optional<Episode> episode = episodeService.getEpisodeById(id); 
+        return episode.map(ResponseEntity::ok)
+                     .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/series/{seriesId}")
-    public List<Episode> getEpisodesBySeries(@PathVariable Long seriesId) {
-        return Collections.emptyList(); // ✅ Devuelve lista vacía
+    @GetMapping("/season/{seasonId}")
+    public List<Episode> getEpisodesBySeason(@PathVariable Long seasonId) {
+        return episodeService.findBySeasonId(seasonId); 
     }
 
     @PostMapping
     public Episode createEpisode(@RequestBody Episode episode) {
-        return episodeService.saveEpisode(episode);
+        return episodeService.saveEpisode(episode); 
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteEpisode(@PathVariable Long id) {
-        episodeService.deleteEpisode(id);
+        episodeService.deleteEpisode(id); 
         return ResponseEntity.noContent().build();
     }
 }
