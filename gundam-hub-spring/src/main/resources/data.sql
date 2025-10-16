@@ -9,7 +9,6 @@ INSERT INTO universes (id, name, description) VALUES
 -- ERAS - UNIVERSAL CENTURY (UC)
 -- =========================
 INSERT INTO eras (id, name, description, universe_id, chronological_order, is_canonical) VALUES
--- UC Eras (cronología estricta)
 (1, 'Pre-Guerra de Un Año', 'Eventos anteriores al conflicto principal entre la Federación de la Tierra y el Principado de Zeon', 1, 1, true),
 (2, 'Guerra de Un Año (0079)', 'Conflicto principal entre la Federación de la Tierra y el Principado de Zeon (UC 0079)', 1, 2, true),
 (3, 'Post-Guerra de Un Año', 'Consecuencias inmediatas de la Guerra de Un Año y el surgimiento de nuevos conflictos', 1, 3, true),
@@ -23,7 +22,6 @@ INSERT INTO eras (id, name, description, universe_id, chronological_order, is_ca
 -- ERAS - ALTERNATE UNIVERSE (AU)
 -- =========================
 INSERT INTO eras (id, name, description, universe_id, chronological_order, is_canonical) VALUES
--- Universos canónicos principales
 (9, 'Future Century', 'Universo de G Gundam donde las guerras se resuelven con torneos de Gundam', 2, 1, true),
 (10, 'After Colony', 'Universo de Gundam Wing con las colonias espaciales luchando por la independencia', 2, 2, true),
 (11, 'After War', 'Universo post-apocalíptico de Gundam X después de la Guerra de los Siete Días', 2, 3, true),
@@ -33,8 +31,6 @@ INSERT INTO eras (id, name, description, universe_id, chronological_order, is_ca
 (15, 'Advanced Generation', 'Universo de Gundam AGE que abarca múltiples generaciones', 2, 7, true),
 (16, 'Post Disaster', 'Universo de Iron-Blooded Orphans 300 años después de la Calamity War', 2, 8, true),
 (17, 'Ad Stella', 'Universo de The Witch from Mercury en la academia espacial Asticassia', 2, 9, true),
-
--- Categorías especiales
 (18, 'Build Series', 'Meta-universo donde los personajes construyen y pelean con modelos Gunpla', 2, 10, false),
 (19, 'Contenido Experimental', 'Shorts, parodias, proyectos especiales y contenido no canónico', 2, 11, false),
 (20, 'GQuuuuuuX Timeline', 'Nueva línea temporal iniciada en 2025 con Gundam GQuuuuuuX', 2, 12, true);
@@ -69,7 +65,7 @@ INSERT INTO series (id, title, release_year, type, hours_length, universe_id, er
 INSERT INTO series (id, title, release_year, type, hours_length, universe_id, era_id) VALUES
 (15, 'Mobile Suit Zeta Gundam', 1985, 'TV', 20.42, 1, 4);
 
--- PRIMERA GUERRA NEO-ZEON - CORREGIDO
+-- Primera Guerra Neo-Zeon
 INSERT INTO series (id, title, release_year, type, hours_length, universe_id, era_id) VALUES
 (16, 'Mobile Suit Gundam ZZ', 1986, 'TV', 19.19, 1, 5),
 (59, 'Mobile Suit Gundam: ZZ Special Edition', 1989, 'OVA', 4.0, 1, 5),
@@ -125,7 +121,8 @@ INSERT INTO series (id, title, release_year, type, hours_length, universe_id, er
 
 -- Anno Domini (Gundam 00)
 INSERT INTO series (id, title, release_year, type, hours_length, universe_id, era_id) VALUES
-(38, 'Gundam 00', 2007, 'TV', 20.42, 2, 14),
+(38, 'Gundam 00 Season 1', 2007, 'TV', 10.21, 2, 14),
+(61, 'Gundam 00 Season 2', 2008, 'TV', 10.21, 2, 14),
 (39, '00: Awakening of the Trailblazer', 2010, 'Movie', 2.0, 2, 14);
 
 -- Advanced Generation (Gundam AGE)
@@ -135,7 +132,8 @@ INSERT INTO series (id, title, release_year, type, hours_length, universe_id, er
 
 -- Post Disaster (Gundam IBO)
 INSERT INTO series (id, title, release_year, type, hours_length, universe_id, era_id) VALUES
-(42, 'Iron-Blooded Orphans', 2015, 'TV', 20.42, 2, 16);
+(42, 'Iron-Blooded Orphans Season 1', 2015, 'TV', 10.21, 2, 16),
+(62, 'Iron-Blooded Orphans Season 2', 2016, 'TV', 10.21, 2, 16);
 
 -- Ad Stella (Gundam Witch)
 INSERT INTO series (id, title, release_year, type, hours_length, universe_id, era_id) VALUES
@@ -167,3 +165,49 @@ INSERT INTO series (id, title, release_year, type, hours_length, universe_id, er
 INSERT INTO series (id, title, release_year, type, hours_length, universe_id, era_id) VALUES
 (57, 'Mobile Suit Gundam GQuuuuuuX: Beginning', 2025, 'Movie', 1.35, 2, 20),
 (58, 'Mobile Suit Gundam GQuuuuuuX (TV)', 2025, 'TV', 4.8, 2, 20);
+
+-- =========================
+-- TEMPORADAS (SEASONS) - COMPLETO
+-- =========================
+
+-- MS IGLOO (3 temporadas)
+INSERT INTO seasons (series_id, season_number, title, description, release_year, type, hours_length, chronological_order, episode_count) VALUES
+(2, 1, 'MS IGLOO: The Hidden One Year War', 'Primera temporada que muestra perspectivas únicas de la Guerra de Un Año', 2004, 'OVA', 1.5, 1, 3),
+(3, 2, 'MS IGLOO: Apocalypse 0079', 'Segunda temporada continuando las historias del frente de batalla', 2006, 'OVA', 1.5, 2, 3),
+(4, 3, 'MS IGLOO 2: Gravity Front', 'Tercera temporada enfocada en operaciones terrestres', 2006, 'OVA', 1.5, 3, 3);
+
+-- The 08th MS Team (2 partes)
+INSERT INTO seasons (series_id, season_number, title, description, release_year, type, hours_length, chronological_order, episode_count) VALUES
+(7, 1, 'The 08th MS Team', 'Serie principal sobre el equipo terrestre', 1996, 'OVA', 4.9, 1, 12),
+(8, 2, 'Miller''s Report', 'Especial que resume y expande la historia', 1998, 'SPECIAL', 0.6, 2, 1);
+
+-- Thunderbolt (2 temporadas/películas)
+INSERT INTO seasons (series_id, season_number, title, description, release_year, type, hours_length, chronological_order, episode_count) VALUES
+(9, 1, 'Thunderbolt: December Sky', 'Primera parte del intenso conflicto en el sector Thunderbolt', 2016, 'MOVIE', 1.67, 1, 1),
+(10, 2, 'Thunderbolt: Bandit Flower', 'Continuación de la batalla entre la Federación y Zeon', 2017, 'MOVIE', 1.5, 2, 1);
+
+-- Gundam 00 (3 partes)
+INSERT INTO seasons (series_id, season_number, title, description, release_year, type, hours_length, chronological_order, episode_count) VALUES
+(38, 1, 'Gundam 00 Season 1', 'Primera temporada: Celestial Being se revela', 2007, 'TV', 10.21, 1, 25),
+(61, 2, 'Gundam 00 Season 2', 'Segunda temporada: 4 años después', 2008, 'TV', 10.21, 2, 25),
+(39, 3, 'Awakening of the Trailblazer', 'Película conclusiva con amenaza alienígena', 2010, 'MOVIE', 2.0, 3, 1);
+
+-- Iron-Blooded Orphans (2 temporadas)
+INSERT INTO seasons (series_id, season_number, title, description, release_year, type, hours_length, chronological_order, episode_count) VALUES
+(42, 1, 'Iron-Blooded Orphans Season 1', 'Primera temporada: Formación de Tekkadan', 2015, 'TV', 10.21, 1, 25),
+(62, 2, 'Iron-Blooded Orphans Season 2', 'Segunda temporada: Consecuencias y batallas finales', 2016, 'TV', 10.21, 2, 25);
+
+-- Gundam SEED (4 partes)
+INSERT INTO seasons (series_id, season_number, title, description, release_year, type, hours_length, chronological_order, episode_count) VALUES
+(33, 1, 'Gundam SEED', 'Historia original con Kira Yamato', 2002, 'TV', 20.42, 1, 50),
+(35, 2, 'Gundam SEED Destiny', 'Secuela con nuevos protagonistas', 2004, 'TV', 20.42, 2, 50),
+(36, 3, 'SEED C.E.73: Stargazer', 'Historia paralela con nuevos personajes', 2006, 'OVA', 0.75, 3, 3),
+(37, 4, 'Gundam SEED Freedom', 'Película que continúa después de Destiny', 2024, 'MOVIE', 2.07, 4, 1);
+
+-- Build Series (5 temporadas)
+INSERT INTO seasons (series_id, season_number, title, description, release_year, type, hours_length, chronological_order, episode_count) VALUES
+(48, 1, 'Gundam Build Fighters', 'Primera temporada con Sei y Reiji', 2013, 'TV', 10.42, 1, 25),
+(49, 2, 'Gundam Build Fighters Try', 'Secuela con nuevos protagonistas', 2014, 'TV', 10.42, 2, 25),
+(50, 3, 'Gundam Build Divers', 'Tercera temporada en mundo virtual', 2018, 'TV', 10.0, 3, 25),
+(51, 4, 'Gundam Build Divers Re:RISE', 'Cuarta temporada con historia más seria', 2019, 'TV', 10.4, 4, 26),
+(52, 5, 'Gundam Build Metaverse', 'Crossover especial de Build Series', 2023, 'ONA', 0.5, 5, 3);
